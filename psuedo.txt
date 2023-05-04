@@ -1,0 +1,16 @@
+Make boundaries of game board offlimits so that when snake hits the border the game ends
+Make Snake's own body off limits so that if he runs into himself the game ends
+create a variable that tracks the score
+create a function that moves the apple somewhere random on the gameboard
+create the gameboard using divs
+make it so that everytime Snake grabs the apple the score variable is incremented by 4 and snakes body grows 4 tiles longer
+create a variable that contains the length of snake
+create a function that draws and undraws snake on the board
+add an event listener for the arrow keys that tells snake which direction to move in
+show "Game Over" text on the screen and the score in the case that the game ends due to snake hitting himself or the game board edge
+create a class for the div elements that line the border of the game
+create an h1 tag for the name of the game "Snake"
+create a div element to show the score on the DOM
+create a button to play again that reinitalizes the game and resets any necessary variables back to their defaults
+create a variable that stores the users highest score
+create a div elements that shows the high scroe on the dom
