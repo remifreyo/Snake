@@ -1,0 +1,94 @@
+Make boundaries of game board offlimits so that when snake hits the border the game ends
+Make Snake's own body off limits so that if he runs into himself the game ends
+create a variable that tracks the score
+create a function that moves the apple somewhere random on the gameboard
+create the gameboard using divs or display:grid (CSS)
+make it so that everytime Snake grabs the apple the score variable is incremented and snakes body grows longer
+create a variable that contains the length of snake
+create a function that draws and undraws snake on the board
+add an event listener for the arrow keys that tells snake which direction to move in
+show "Game Over" text on the screen and the score in the case that the game ends due to snake hitting himself or the game board edge
+create a class for the div elements that line the border of the game
+create an h1 tag for the name of the game "Snake"
+create a div element to show the score on the DOM
+create a button to play again that reinitalizes the game and resets any necessary variables back to their defaults
+create a variable that stores the users highest score
+create a div elements that shows the high score on the dom
+
+/*----- constants -----*/
+// store the board in a variable using query selector
+const board
+/*----- state variables -----*/
+// store the apple location in two variables that takes a randomized x & y position on the grid from the moveApple function 
+let appleX
+let appleY  
+// store the snake head location in two variables that takes a random x & y position on the grid from the moveSnake function
+let snakeX
+let snakeY
+// store the users current score in a variable that is preset to 0
+let score = 0
+// store the users highest score in a variable that is preset to 0
+let highScore = 0 
+// set the state of the game to in progress by initalizing a gameover variable to false
+let gameOver = false
+/*----- cached elements  -----*/
+
+/*----- functions -----*/
+// place the apple and snake head in two random locations within a 20x20 grid, hide/show play again button, check to see if game is in progress, check to see if snake eats the apple  
+const init = () => {
+
+}
+// generate two random numbers between 0-20 using Math.floor and Math.random and check if that position is currently occupied by the snake if it is, run it again if it isn't that will serve as the x and y position for the apple
+const moveApple = () => {
+
+}
+// generate two random numbers between 0-20 using Math.floor and Math.random and check to see if it is the same as the x and y position for the apple if it is run it again if it isn't that will serve as the x and y position for the snake head's starting position
+const moveSnakeHead = () => {
+
+}
+// update the score everytime the apple and snake head cross paths
+const updateScore = () => {
+if (snake eats the apple) {
+  moveApple()
+  score++
+}
+}
+// check to see if the game is still in play and if it isn't render the "Game Over" message to the screen, stop snake from moving, set the highscore variable to equal the current score and set the score variable back to 0
+const gameOver = () => {
+if (game is over) {
+// use innerhtml to tell user that the game is over
+highscore = score
+score = 0
+// show play again button
+} 
+}
+// check to see if snake has collided with himself and if he has end the game
+const collideWithSelf = () => {
+
+gameOver = true
+}
+// check to see if snake has collided with the game edge and if he has end the game
+const collideWithEdge = () => {
+
+gameOver = true
+}
+
+// move snake based on user input 
+const moveSnake = (e) => {
+  if (e.keyCode = '37') {
+
+  }
+  if (e.keyCode = '38') {
+    
+  }
+  if (e.keyCode = '39') {
+    
+  }
+  if (e.keyCode = '40') {
+    
+  }
+}
+
+/*----- event listeners -----*/
+// listen for arrow up, arrow down, arrow left, and arrow right and change the direction snake is moving based on which key is pressed 
+document.addEventListener("keydown", moveSnake)

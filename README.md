@@ -35,7 +35,7 @@
 ### **_Future Updates_**
 
 - [ ] Add a new layer of difficulty by making Snake increase in speed as the game goes on
-- [ ] Build Wireframe
+- [x] ~~Build Wireframe~~
 - [x] ~~Create ReadMe~~
 - [x] ~~Write Psuedo Code~~
 
