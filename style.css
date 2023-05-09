@@ -38,3 +38,8 @@ h1 {
 .head {
   background-color: rgb(0, 117, 6);
 }
+
+button {
+  color: white;
+  background-color: rgb(68, 65, 65);
+}
