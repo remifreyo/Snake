@@ -42,7 +42,16 @@ const gameOver = (e) => {
   }
 }
 
-const collideWithSelf = () => {}
+const collideWithSelf = () => {
+  for (i = snakeBody.length - 1; i > 0; i--) {
+    if (
+      snakeBody[0].x === snakeBody[i].x &&
+      snakeBody[0].y === snakeBody[i].y
+    ) {
+      gameIsOver = true
+    }
+  }
+}
 
 const moveApple = () => {
   foodRow = Math.floor(Math.random() * 25) + 1
@@ -50,6 +59,7 @@ const moveApple = () => {
 }
 const init = () => {
   if (gameIsOver === false) {
+    collideWithSelf()
     snakeFood = `<div class ="food" style="grid-area: ${foodRow} / ${foodColumn}"></div>`
     for (i = snakeBody.length - 1; i >= 0; i--) {
       p = i - 1
