@@ -13,24 +13,30 @@ let snakeBody = [{ x: headRow, y: headColumn }]
 let horizontalDirection = 0
 let verticalDirection = 0
 let gameIsOver = false
+let paused = false
+let interval
 /*----- cached elements  -----*/
 
 /*----- functions -----*/
 
 const moveSnake = (e) => {
-  if (e.key === 'ArrowLeft' && horizontalDirection !== 1) {
+  if (e.key === 'ArrowLeft' && horizontalDirection !== 1 && paused === false) {
     horizontalDirection = -1
     verticalDirection = 0
   }
-  if (e.key === 'ArrowUp' && verticalDirection !== 1) {
+  if (e.key === 'ArrowUp' && verticalDirection !== 1 && paused === false) {
     verticalDirection = -1
     horizontalDirection = 0
   }
-  if (e.key === 'ArrowRight' && horizontalDirection !== -1) {
+  if (
+    e.key === 'ArrowRight' &&
+    horizontalDirection !== -1 &&
+    paused === false
+  ) {
     horizontalDirection = 1
     verticalDirection = 0
   }
-  if (e.key === 'ArrowDown' && verticalDirection !== -1) {
+  if (e.key === 'ArrowDown' && verticalDirection !== -1 && paused === false) {
     verticalDirection = 1
     horizontalDirection = 0
   }
@@ -58,7 +64,6 @@ const moveApple = () => {
   foodColumn = Math.floor(Math.random() * 25) + 1
   for (i = snakeBody.length - 1; i >= 0; i--) {
     if (snakeBody[i].x === foodRow && snakeBody[i].y === foodColumn) {
-      console.log('I;m hidden')
       foodRow = Math.floor(Math.random() * 25) + 1
       foodColumn = Math.floor(Math.random() * 25) + 1
     }
@@ -70,7 +75,7 @@ const init = () => {
     snakeFood = `<div class ="food" style="grid-area: ${foodRow} / ${foodColumn}"></div>`
     for (i = snakeBody.length - 1; i >= 0; i--) {
       p = i - 1
-      if (snakeBody[0].x >= 1 && snakeBody[0].x <= 25) {
+      if (snakeBody[0].x >= 1 && snakeBody[0].x <= 25 && paused === false) {
         if (snakeBody[0] === snakeBody[i]) {
           snakeBody[i].x += verticalDirection
         } else {
@@ -80,7 +85,7 @@ const init = () => {
       } else if (snakeBody[0].x < 1 || snakeBody[0].x > 25) {
         gameIsOver = true
       }
-      if (snakeBody[0].y >= 1 && snakeBody[0].y <= 25) {
+      if (snakeBody[0].y >= 1 && snakeBody[0].y <= 25 && paused === false) {
         if (snakeBody[0] === snakeBody[i]) {
           snakeBody[i].y += horizontalDirection
         } else {
@@ -143,8 +148,19 @@ const init = () => {
   }
 }
 
-setInterval(init, 190)
+const pauseResume = (e) => {
+  if (e.code === 'Space' && paused === false) {
+    clearInterval(interval)
+    paused = true
+  } else if (e.code === 'Space' && paused === true) {
+    interval = setInterval(init, 190)
+    paused = false
+  }
+}
+
+interval = setInterval(init, 190)
 
 /*----- event listeners -----*/
 document.addEventListener('keydown', moveSnake)
 document.addEventListener('click', gameOver)
+document.addEventListener('keydown', pauseResume)
