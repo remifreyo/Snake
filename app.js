@@ -7,7 +7,7 @@ let foodColumn = Math.floor(Math.random() * 25) + 1
 let headRow = Math.floor(Math.random() * 15) + 5
 let headColumn = Math.floor(Math.random() * 15) + 5
 let score = 0
-let highscore = 0
+let highscore = localStorage.getItem('highscore') || 0
 let snakeFood
 let snakeBody = [{ x: headRow, y: headColumn }]
 let horizontalDirection = 0
@@ -114,12 +114,17 @@ const init = () => {
     board.innerHTML = snakeFood + snake
     document.querySelector('button').style.visibility = 'hidden'
     document.querySelector('#score').innerHTML = 'Score:' + ' ' + score
+    document.querySelector('#high-score').innerHTML =
+      'Highest Score:' + ' ' + highscore
   } else {
     hTag.style.color = 'red'
     hTag.innerText = 'Game Over'
     if (score > highscore) {
       document.querySelector('#high-score').innerHTML =
         'Highest Score:' + ' ' + score
+      localStorage.setItem('highscore', score)
+    } else {
+      'Highest Score:' + ' ' + highscore
     }
     board.innerHTML = ''
     document.querySelector('button').style.visibility = 'visible'
