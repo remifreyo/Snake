@@ -56,6 +56,13 @@ const collideWithSelf = () => {
 const moveApple = () => {
   foodRow = Math.floor(Math.random() * 25) + 1
   foodColumn = Math.floor(Math.random() * 25) + 1
+  for (i = snakeBody.length - 1; i >= 0; i--) {
+    if (snakeBody[i].x === foodRow && snakeBody[i].y === foodColumn) {
+      console.log('I;m hidden')
+      foodRow = Math.floor(Math.random() * 25) + 1
+      foodColumn = Math.floor(Math.random() * 25) + 1
+    }
+  }
 }
 const init = () => {
   if (gameIsOver === false) {
@@ -136,7 +143,7 @@ const init = () => {
   }
 }
 
-setInterval(init, 170)
+setInterval(init, 190)
 
 /*----- event listeners -----*/
 document.addEventListener('keydown', moveSnake)
