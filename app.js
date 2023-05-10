@@ -15,6 +15,8 @@ let verticalDirection = 0
 let gameIsOver = false
 let paused = false
 let interval
+let gameSpeed = 240
+let scoreIncreased = false
 /*----- cached elements  -----*/
 
 /*----- functions -----*/
@@ -69,9 +71,21 @@ const moveApple = () => {
     }
   }
 }
+
+const increseScore = () => {
+  if (score > 0 && score % 3 === 0 && scoreIncreased === false) {
+    gameSpeed += 5
+    scoreIncreased = true
+    interval = setInterval(init, gameSpeed)
+  } else if (score % 3 !== 0) {
+    scoreIncreased = false
+  }
+}
+
 const init = () => {
   if (gameIsOver === false) {
     collideWithSelf()
+    increseScore()
     snakeFood = `<div class ="food" style="grid-area: ${foodRow} / ${foodColumn}"></div>`
     for (i = snakeBody.length - 1; i >= 0; i--) {
       p = i - 1
@@ -84,6 +98,10 @@ const init = () => {
         }
       } else if (snakeBody[0].x < 1 || snakeBody[0].x > 25) {
         gameIsOver = true
+        console.log(
+          snakeBody[snakeBody.length - 1].x,
+          snakeBody[snakeBody.length - 1].y
+        )
       }
       if (snakeBody[0].y >= 1 && snakeBody[0].y <= 25 && paused === false) {
         if (snakeBody[0] === snakeBody[i]) {
@@ -94,6 +112,10 @@ const init = () => {
         }
       } else if (snakeBody[0].y < 1 || snakeBody[0].y > 25) {
         gameIsOver = true
+        console.log(
+          snakeBody[snakeBody.length - 1].x,
+          snakeBody[snakeBody.length - 1].y
+        )
       }
     }
     let snake = ''
@@ -153,12 +175,12 @@ const pauseResume = (e) => {
     clearInterval(interval)
     paused = true
   } else if (e.code === 'Space' && paused === true) {
-    interval = setInterval(init, 190)
+    interval = setInterval(init, gameSpeed)
     paused = false
   }
 }
 
-interval = setInterval(init, 190)
+interval = setInterval(init, gameSpeed)
 
 /*----- event listeners -----*/
 document.addEventListener('keydown', moveSnake)
