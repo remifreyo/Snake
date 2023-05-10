@@ -53,13 +53,28 @@ const init = () => {
     snakeFood = `<div class ="food" style="grid-area: ${foodRow} / ${foodColumn}"></div>`
 
     for (i = snakeBody.length - 1; i >= 0; i--) {
+      p = i - 1
       if (snakeBody[0].x >= 1 && snakeBody[0].x <= 25) {
-        snakeBody[i].x += verticalDirection
+        if (
+          snakeBody[0].y === snakeBody[i].y ||
+          snakeBody[p].y === snakeBody[i].y
+        ) {
+          snakeBody[i].x += verticalDirection
+        } else {
+          snakeBody[i].y += -verticalDirection
+        }
       } else if (snakeBody[0].x < 1 || snakeBody[0].x > 25) {
         gameIsOver = true
       }
       if (snakeBody[0].y >= 1 && snakeBody[0].y <= 25) {
-        snakeBody[i].y += horizontalDirection
+        if (
+          snakeBody[0].x === snakeBody[i].x ||
+          snakeBody[p].x === snakeBody[i].x
+        ) {
+          snakeBody[i].y += horizontalDirection
+        } else {
+          snakeBody[i].x += -horizontalDirection
+        }
       } else if (snakeBody[0].y < 1 || snakeBody[0].y > 25) {
         gameIsOver = true
       }
@@ -106,6 +121,7 @@ const init = () => {
       document.querySelector('#high-score').innerHTML =
         'Highest Score:' + ' ' + score
     }
+    board.innerHTML = ''
     document.querySelector('button').style.visibility = 'visible'
   }
 }
