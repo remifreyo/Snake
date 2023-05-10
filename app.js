@@ -51,29 +51,24 @@ const moveApple = () => {
 const init = () => {
   if (gameIsOver === false) {
     snakeFood = `<div class ="food" style="grid-area: ${foodRow} / ${foodColumn}"></div>`
-
     for (i = snakeBody.length - 1; i >= 0; i--) {
       p = i - 1
       if (snakeBody[0].x >= 1 && snakeBody[0].x <= 25) {
-        if (
-          snakeBody[0].y === snakeBody[i].y ||
-          snakeBody[p].y === snakeBody[i].y
-        ) {
+        if (snakeBody[0] === snakeBody[i]) {
           snakeBody[i].x += verticalDirection
         } else {
-          snakeBody[i].y += -verticalDirection
+          snakeBody[i].x = snakeBody[p].x
+          snakeBody[i].y = snakeBody[p].y
         }
       } else if (snakeBody[0].x < 1 || snakeBody[0].x > 25) {
         gameIsOver = true
       }
       if (snakeBody[0].y >= 1 && snakeBody[0].y <= 25) {
-        if (
-          snakeBody[0].x === snakeBody[i].x ||
-          snakeBody[p].x === snakeBody[i].x
-        ) {
+        if (snakeBody[0] === snakeBody[i]) {
           snakeBody[i].y += horizontalDirection
         } else {
-          snakeBody[i].x += -horizontalDirection
+          snakeBody[i].x = snakeBody[p].x
+          snakeBody[i].y = snakeBody[p].y
         }
       } else if (snakeBody[0].y < 1 || snakeBody[0].y > 25) {
         gameIsOver = true
