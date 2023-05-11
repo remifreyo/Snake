@@ -15,7 +15,7 @@ let verticalDirection = 0
 let gameIsOver = false
 let paused = false
 let interval
-let gameSpeed = 240
+let gameSpeed = 200
 let scoreIncreased = false
 /*----- cached elements  -----*/
 
@@ -72,12 +72,13 @@ const moveApple = () => {
   }
 }
 
-const increseScore = () => {
-  if (score > 0 && score % 3 === 0 && scoreIncreased === false) {
-    gameSpeed += 5
+const increaseScore = () => {
+  if (score > 0 && score % 2 === 0 && scoreIncreased === false) {
+    gameSpeed -= 35
     scoreIncreased = true
+    clearInterval(interval)
     interval = setInterval(init, gameSpeed)
-  } else if (score % 3 !== 0) {
+  } else if (score % 2 !== 0) {
     scoreIncreased = false
   }
 }
@@ -85,7 +86,7 @@ const increseScore = () => {
 const init = () => {
   if (gameIsOver === false) {
     collideWithSelf()
-    increseScore()
+    increaseScore()
     snakeFood = `<div class ="food" style="grid-area: ${foodRow} / ${foodColumn}"></div>`
     for (i = snakeBody.length - 1; i >= 0; i--) {
       p = i - 1
@@ -98,10 +99,6 @@ const init = () => {
         }
       } else if (snakeBody[0].x < 1 || snakeBody[0].x > 25) {
         gameIsOver = true
-        console.log(
-          snakeBody[snakeBody.length - 1].x,
-          snakeBody[snakeBody.length - 1].y
-        )
       }
       if (snakeBody[0].y >= 1 && snakeBody[0].y <= 25 && paused === false) {
         if (snakeBody[0] === snakeBody[i]) {
@@ -112,10 +109,6 @@ const init = () => {
         }
       } else if (snakeBody[0].y < 1 || snakeBody[0].y > 25) {
         gameIsOver = true
-        console.log(
-          snakeBody[snakeBody.length - 1].x,
-          snakeBody[snakeBody.length - 1].y
-        )
       }
     }
     let snake = ''
