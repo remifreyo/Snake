@@ -85,9 +85,14 @@ const increaseScore = () => {
 
 const init = () => {
   if (gameIsOver === false) {
+    let snake = ''
     collideWithSelf()
     increaseScore()
     snakeFood = `<div class ="food" style="grid-area: ${foodRow} / ${foodColumn}"></div>`
+    snakeBody.forEach((square) => {
+      if (snakeBody[0].x < 1 || snakeBody[0].y < 1) return
+      snake += `<div class="head" style="grid-area: ${square.x} / ${square.y}"></div>`
+    })
     for (i = snakeBody.length - 1; i >= 0; i--) {
       p = i - 1
       if (snakeBody[0].x >= 1 && snakeBody[0].x <= 25 && paused === false) {
@@ -97,7 +102,7 @@ const init = () => {
           snakeBody[i].x = snakeBody[p].x
           snakeBody[i].y = snakeBody[p].y
         }
-      } else if (snakeBody[0].x < 1 || snakeBody[0].x > 25) {
+      } else if (snakeBody[0].x === 0 || snakeBody[0].x > 25) {
         gameIsOver = true
       }
       if (snakeBody[0].y >= 1 && snakeBody[0].y <= 25 && paused === false) {
@@ -107,14 +112,10 @@ const init = () => {
           snakeBody[i].x = snakeBody[p].x
           snakeBody[i].y = snakeBody[p].y
         }
-      } else if (snakeBody[0].y < 1 || snakeBody[0].y > 25) {
+      } else if (snakeBody[0].y === 0 || snakeBody[0].y > 25) {
         gameIsOver = true
       }
     }
-    let snake = ''
-    snakeBody.forEach((square) => {
-      snake += `<div class="head" style="grid-area: ${square.x} / ${square.y}"></div>`
-    })
     if (snakeBody[0].y === foodColumn && snakeBody[0].x === foodRow) {
       if (verticalDirection === 1) {
         snakeBody.push({
