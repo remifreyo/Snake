@@ -26,15 +26,14 @@
 
 ### **_Screenshots_**
 
-##### Placeholder Image
-
-![Image](https://i.pinimg.com/originals/bc/e3/d1/bce3d16b46ff6fd3188ee8fc915d8843.jpg)
+![Image](ss1.png)
+![Image](ss2.png)
 
 ---
 
 ### **_Future Updates_**
 
-- [ ] Add a new layer of difficulty by making Snake increase in speed as the game goes on
+- [x] ~~Add a new layer of difficulty by making Snake increase in speed as the game goes on~~
 - [x] ~~Build Wireframe~~
 - [x] ~~Create ReadMe~~
 - [x] ~~Write Psuedo Code~~
@@ -42,3 +41,6 @@
 ---
 
 ### **_Credits_**
+
+https://www.youtube.com/watch?v=K8Rh5x3c9Pw&t=1442s
+https://www.youtube.com/watch?v=8mRY70ot_n4&t=3862s
