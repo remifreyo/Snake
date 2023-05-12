@@ -17,7 +17,6 @@
 
 ### **_Technologies_**
 
-- VSCode
 - HTML
 - CSS
 - Javascript
@@ -28,6 +27,7 @@
 
 ![Image](ss1.png)
 ![Image](ss2.png)
+![Image](ss3.png)
 
 ---
 
@@ -53,5 +53,5 @@
 
 ### **_Credits_**
 
-https://www.youtube.com/watch?v=K8Rh5x3c9Pw&t=1442s
-https://www.youtube.com/watch?v=8mRY70ot_n4&t=3862s
+[CodingNepal](https://www.youtube.com/watch?v=K8Rh5x3c9Pw&t=1442s) |
+[Code_Explained](https://www.youtube.com/watch?v=8mRY70ot_n4&t=3862s)
