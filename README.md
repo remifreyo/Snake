@@ -33,6 +33,17 @@
 
 ### **_Future Updates_**
 
+- [] Add Sound Effect for When Snake Eats the Food
+- [] Add Sound Effect for When Snake Loses the Game
+- [] Create a Food Type that Allows Snake 1 Free Pass to Move through Himself or a Dead Square
+- [] Create a Poison Game Element that Removes a Grid Location as an Acceptable Area to Pass Through
+- [] Create a Food Type that Randomnly Populates at one of the 4 Corners that when Eaten Removes Squares from Snake's Body
+- [] Create Levels for Each Difficulty Setting
+- [] Create Buttons for Changing Between 4 Difficulty Settings
+- [] Add Custom Audio Player
+- [] Fix Ability to Move 1 Square while Paused Bug
+- [] Fix Move Audio Play Position w/ Arrow Keys Bug
+- [] Fix Background Repeat Bug
 - [x] ~~Add a new layer of difficulty by making Snake increase in speed as the game goes on~~
 - [x] ~~Build Wireframe~~
 - [x] ~~Create ReadMe~~
