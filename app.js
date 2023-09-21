@@ -24,7 +24,7 @@ let score = 0
 // Grab the Highest Score in memory or if non-existent set it to 0
 let highscore = localStorage.getItem('highscore') || 0
 
-// Store the Position of Snake's Body into Objects inside of an Array
+// Store the Position of Snake's Body into an Object inside of an Array
 let snakeBody = [{ x: headRow, y: headColumn }]
 
 // Track Snakes Current Direction
@@ -108,8 +108,8 @@ const moveApple = () => {
 
 // Increase Game Speed by a Alterable Divisible of Score to Add Dificulty
 const increaseSpeed = () => {
-  if (score > 0 && score % 2 === 0 && speedIncreased === false) {
-    gameSpeed -= 35
+  if (score > 0 && score % 5 === 0 && speedIncreased === false) {
+    gameSpeed -= 2
     speedIncreased = true
     clearInterval(interval)
     interval = setInterval(init, gameSpeed)
@@ -130,7 +130,7 @@ const pauseResume = (e) => {
 }
 
 const init = () => {
-  // Run This Entire Block As Long As The Game isn't Over
+  //As Long As The Game isn't Over...
   if (gameIsOver === false) {
     // Snake
     let snake = ''
@@ -246,3 +246,4 @@ interval = setInterval(init, gameSpeed)
 document.addEventListener('keydown', moveSnake)
 document.addEventListener('click', gameOver)
 document.addEventListener('keydown', pauseResume)
+document.addEventListener('screen')
